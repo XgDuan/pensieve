@@ -16,11 +16,13 @@ SMOOTH_P = 1
 COLOR_MAP = plt.cm.jet #nipy_spectral, Set1,Paired 
 SIM_DP = 'sim_dp'
 #SCHEMES = ['BB', 'RB', 'FIXED', 'FESTIVE', 'BOLA', 'RL',  'sim_rl', SIM_DP]
-SCHEMES = ['sim_rl', SIM_DP]
+# SCHEMES = ['sim_rl', SIM_DP]
+# SCHEMES = ['bb', 'mpc','future4_mpc']
+SCHEMES = ['future5_mpc', 'bb', 'mpc']
 
 def main():
 	time_all = {}
-	bit_rate_all = {}
+	bit_rate_all = {} 
 	buff_all = {}
 	bw_all = {}
 	raw_reward_all = {}
@@ -102,11 +104,11 @@ def main():
 
 		for scheme in SCHEMES:
 			if scheme in log_file:
-				time_all[scheme][log_file[len('log_' + str(scheme) + '_'):]] = time_ms
-				bit_rate_all[scheme][log_file[len('log_' + str(scheme) + '_'):]] = bit_rate
-				buff_all[scheme][log_file[len('log_' + str(scheme) + '_'):]] = buff
-				bw_all[scheme][log_file[len('log_' + str(scheme) + '_'):]] = bw
-				raw_reward_all[scheme][log_file[len('log_' + str(scheme) + '_'):]] = reward
+				time_all[scheme][log_file[len('log_sim_' + str(scheme) + '_'):]] = time_ms
+				bit_rate_all[scheme][log_file[len('log_sim_' + str(scheme) + '_'):]] = bit_rate
+				buff_all[scheme][log_file[len('log_sim_' + str(scheme) + '_'):]] = buff
+				bw_all[scheme][log_file[len('log_sim_' + str(scheme) + '_'):]] = bw
+				raw_reward_all[scheme][log_file[len('log_sim_' + str(scheme) + '_'):]] = reward
 				break
 
 	# ---- ---- ---- ----
@@ -122,6 +124,7 @@ def main():
 		schemes_check = True
 		for scheme in SCHEMES:
 			if l not in time_all[scheme] or len(time_all[scheme][l]) < VIDEO_LEN:
+				import pdb; pdb.set_trace()
 				schemes_check = False
 				break
 		if schemes_check:

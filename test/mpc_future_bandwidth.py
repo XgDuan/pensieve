@@ -1,5 +1,5 @@
 import numpy as np
-import fixed_env2 as env
+import fixed_env_future_bandwidth as env
 import load_trace
 import matplotlib.pyplot as plt
 import itertools
@@ -8,7 +8,7 @@ import itertools
 S_INFO = 5  # bit_rate, buffer_size, rebuffering_time, bandwidth_measurement, chunk_til_video_end
 S_LEN = 8  # take how many frames in the past
 A_DIM = 6
-MPC_FUTURE_CHUNK_COUNT = 7
+MPC_FUTURE_CHUNK_COUNT = 6
 ACTOR_LR_RATE = 0.0001
 CRITIC_LR_RATE = 0.001
 VIDEO_BIT_RATE = [300,750,1200,1850,2850,4300]  # Kbps
@@ -23,7 +23,7 @@ DEFAULT_QUALITY = 1  # default video quality without agent
 RANDOM_SEED = 42
 RAND_RANGE = 1000000
 SUMMARY_DIR = './results'
-LOG_FILE = './results/log_sim_future7_mpc'
+LOG_FILE = './results/log_sim_future%d_mpc' % (MPC_FUTURE_CHUNK_COUNT)
 # log in format of time_stamp bit_rate buffer_size rebuffer_time chunk_size download_time reward
 # NN_MODEL = './models/nn_model_ep_5900.ckpt'
 

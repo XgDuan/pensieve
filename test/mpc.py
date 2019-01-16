@@ -86,7 +86,7 @@ def main():
         # the action is from the last decision
         # this is to make the framework similar to the real
         delay, sleep_time, buffer_size, rebuf, \
-        video_chunk_size, \
+        video_chunk_size, _, \
         end_of_video, video_chunk_remain = \
             net_env.get_video_chunk(bit_rate)
 
@@ -138,7 +138,7 @@ def main():
         state[0, -1] = VIDEO_BIT_RATE[bit_rate] / float(np.max(VIDEO_BIT_RATE))  # last quality
         state[1, -1] = buffer_size / BUFFER_NORM_FACTOR
         state[2, -1] = rebuf
-        state[3, -1] = float(video_chunk_size) / float(delay) / M_IN_K  # kilo byte / ms
+        state[3, -1] = float(video_chunk_size) / float(delay) / M_IN_K  # MB in S
         state[4, -1] = np.minimum(video_chunk_remain, CHUNK_TIL_VIDEO_END_CAP) / float(CHUNK_TIL_VIDEO_END_CAP)
         # state[5: 10, :] = future_chunk_sizes / M_IN_K / M_IN_K
 

@@ -68,7 +68,7 @@ def restore_or_compute_download_time(download_time, video_chunk, quan_t_idx, bit
 
 
 def main():
-    all_cooked_time, all_cooked_bw = load_trace.load_trace()
+    all_cooked_time, all_cooked_bw, _ = load_trace.load_trace()
 
     video_size = {}  # in bytes
     for bitrate in xrange(BITRATE_LEVELS):

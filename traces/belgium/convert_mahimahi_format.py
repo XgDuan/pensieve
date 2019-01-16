@@ -2,8 +2,8 @@ import os
 import numpy as np
 
 
-FILE_PATH = './logs/'
-OUTPUT_PATH = './mahimahi/'
+FILE_PATH = '../data/belgium/'
+OUTPUT_PATH = '../data/cooked_belgium/'
 BYTES_PER_PKT = 1500.0
 MILLISEC_IN_SEC = 1000.0
 BITS_IN_BYTE = 8.0

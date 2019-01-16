@@ -60,7 +60,7 @@ class Environment:
             throughput = self.cooked_bw[self.mahimahi_ptr] \
                          * B_IN_MB / BITS_IN_BYTE
             duration = self.cooked_time[self.mahimahi_ptr] \
-                       - self.last_mahimahi_time
+                       - self.last_mahimahi_time  # duration in second
 
             packet_payload = throughput * duration * PACKET_PAYLOAD_PORTION
 
@@ -152,19 +152,19 @@ class Environment:
         next_video_chunk_sizes = []
         for i in xrange(BITRATE_LEVELS):
             next_video_chunk_sizes.append(self.video_size[i][self.video_chunk_counter])
-        return delay, \
-            sleep_time, \
-            return_buffer_size / MILLISECONDS_IN_SECOND, \
-            rebuf / MILLISECONDS_IN_SECOND, \
-            video_chunk_size, \
-            end_of_video, \
-            video_chunk_remain
-
         # return delay, \
         #     sleep_time, \
         #     return_buffer_size / MILLISECONDS_IN_SECOND, \
         #     rebuf / MILLISECONDS_IN_SECOND, \
         #     video_chunk_size, \
-        #     next_video_chunk_sizes, \
         #     end_of_video, \
         #     video_chunk_remain
+
+        return delay, \
+            sleep_time, \
+            return_buffer_size / MILLISECONDS_IN_SECOND, \
+            rebuf / MILLISECONDS_IN_SECOND, \
+            video_chunk_size, \
+            next_video_chunk_sizes, \
+            end_of_video, \
+            video_chunk_remain
