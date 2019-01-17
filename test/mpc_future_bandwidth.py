@@ -8,7 +8,7 @@ import itertools
 S_INFO = 5  # bit_rate, buffer_size, rebuffering_time, bandwidth_measurement, chunk_til_video_end
 S_LEN = 8  # take how many frames in the past
 A_DIM = 6
-MPC_FUTURE_CHUNK_COUNT = 6
+MPC_FUTURE_CHUNK_COUNT = 5
 ACTOR_LR_RATE = 0.0001
 CRITIC_LR_RATE = 0.001
 VIDEO_BIT_RATE = [300,750,1200,1850,2850,4300]  # Kbps
@@ -148,7 +148,7 @@ def main():
             curr_error  = abs(past_bandwidth_ests[-1]-state[3,-1])/float(state[3,-1])
         past_errors.append(curr_error)
 
-        # pick bitrate according to MPC           
+        # pick bitrate according to MPC
         # first get harmonic mean of last 5 bandwidths
         past_bandwidths = state[3,-5:]
         while past_bandwidths[0] == 0.0:
@@ -218,7 +218,7 @@ def main():
                 last_quality = chunk_quality
             # compute reward for this combination (one reward per 5-chunk combo)
             # bitrates are in Mbits/s, rebuffer in seconds, and smoothness_diffs in Mbits/s
-            
+
             reward = (bitrate_sum/1000.) - (REBUF_PENALTY*curr_rebuffer_time) - (smoothness_diffs/1000.)
             # reward = bitrate_sum - (8*curr_rebuffer_time) - (smoothness_diffs)
 

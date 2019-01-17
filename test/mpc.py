@@ -1,7 +1,7 @@
 import numpy as np
 import fixed_env as env
 import load_trace
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import itertools
 
 
@@ -61,7 +61,7 @@ def main():
                               all_cooked_bw=all_cooked_bw)
 
     log_path = LOG_FILE + '_' + all_file_names[net_env.trace_idx]
-    log_file = open(log_path, 'wb')
+    log_file = open(log_path, 'w')
 
     time_stamp = 0
 
@@ -148,7 +148,7 @@ def main():
             curr_error  = abs(past_bandwidth_ests[-1]-state[3,-1])/float(state[3,-1])
         past_errors.append(curr_error)
 
-        # pick bitrate according to MPC           
+        # pick bitrate according to MPC
         # first get harmonic mean of last 5 bandwidths
         past_bandwidths = state[3,-5:]
         while past_bandwidths[0] == 0.0:
@@ -211,7 +211,7 @@ def main():
                 last_quality = chunk_quality
             # compute reward for this combination (one reward per 5-chunk combo)
             # bitrates are in Mbits/s, rebuffer in seconds, and smoothness_diffs in Mbits/s
-            
+
             reward = (bitrate_sum/1000.) - (REBUF_PENALTY*curr_rebuffer_time) - (smoothness_diffs/1000.)
             # reward = bitrate_sum - (8*curr_rebuffer_time) - (smoothness_diffs)
 
@@ -257,14 +257,14 @@ def main():
             a_batch.append(action_vec)
             entropy_record = []
 
-            print "video count", video_count
+            print("video count", video_count)
             video_count += 1
 
             if video_count >= len(all_file_names):
                 break
 
             log_path = LOG_FILE + '_' + all_file_names[net_env.trace_idx]
-            log_file = open(log_path, 'wb')
+            log_file = open(log_path, 'w')
 
 
 if __name__ == '__main__':

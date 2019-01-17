@@ -21,9 +21,6 @@ def main():
                 output_file_name = file_name
             with open(os.path.join(dir_path, file_name), 'rb') as f, open(os.path.join(OUTPUT_PATH, output_file_name), 'wb') as mf:
                 start_time = None
-                time_ms = []
-                bandwidth_ = []
-                
                 for line in f:
                     parse = line.split()
                     if start_time is None:
