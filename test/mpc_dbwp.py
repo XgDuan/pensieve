@@ -298,7 +298,6 @@ def main():
                 break
 
             log_path = LOG_FILE + '_' + all_file_names[net_env.trace_idx]
-            print(all_file_names[net_env.trace_idx + 1])
             log_file = open(log_path, 'w')
 
 

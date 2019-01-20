@@ -136,10 +136,10 @@ class Environment:
             end_of_video = True
             self.buffer_size = 0
             self.video_chunk_counter = 0
-            
+
             self.trace_idx += 1
             if self.trace_idx >= len(self.all_cooked_time):
-                self.trace_idx = 0            
+                self.trace_idx = 0
 
             self.cooked_time = self.all_cooked_time[self.trace_idx]
             self.cooked_bw = self.all_cooked_bw[self.trace_idx]
@@ -159,7 +159,6 @@ class Environment:
         #     video_chunk_size, \
         #     end_of_video, \
         #     video_chunk_remain
-
         return delay, \
             sleep_time, \
             return_buffer_size / MILLISECONDS_IN_SECOND, \
