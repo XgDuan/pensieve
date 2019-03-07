@@ -1,4 +1,4 @@
-# rnn-mpc
+# rnn-mpc(no more update, this is just a course project)
 
 # 文件修改说明
 
